@@ -23,10 +23,10 @@ body, html {
 }
 .logo {
   position: absolute;
-  top: 50px; /* Y */
-  left: 412px; /* X */
-  width: 246px; /* Width */
-  height: 91px; /* Height */
+  top: 50px;
+  left: 412px;
+  width: 246px;
+  height: 91px;
 }
 
 .input-container {
@@ -36,43 +36,40 @@ body, html {
 }
 
 .username-container {
-  top: 200px; /* Y position for the container */
-  left: 310px; /* X position for the container */
+  top: 200px;
+  left: 310px;
 }
 
 .password-container {
-  top: 290px; /* Adjust as needed for the password position */
-  left: 310px; /* X position */
+  top: 290px;
+  left: 310px;
 }
-
 
 /* xx */
 
 .usereg-container {
-  top: 200px; /* Y position for the container */
-  left: 310px; /* X position for the container */
+  top: 200px;
+  left: 310px;
 }
 
 .emailreg-container {
-  top: 290px; /* Adjust as needed for the password position */
-  left: 310px; /* X position */
+  top: 290px;
+  left: 310px;
 }
 
 .passwordreg-container {
-  top: 390px; /* Y position for the container */
-  left: 310px; /* X position for the container */
+  top: 390px;
+  left: 310px;
 }
 
 .password2-container {
-  top: 490px; /* Adjust as needed for the password position */
-  left: 310px; /* X position */
+  top: 490px;
+  left: 310px;
 }
-
-
 
 .label {
   position: absolute;
-  width: 100%; /* Adjust the width to match the label image */
+  width: 100%;
 }
 
 .input-field {
@@ -80,80 +77,79 @@ body, html {
   border: none;
   font-size: 18px;
   font-weight: bold;
-  color: #000; /* Sets the entered text color to black */
-  padding: 2px 82px 0 82px; /* Adjust padding to position the placeholder and input text */
+  color: #000;
+  padding: 2px 82px 0 82px;
   width: 100%;
-  z-index: 1; /* Ensure the input is above the label image */
+  z-index: 1;
   font-family: Arial, sans-serif;
 }
 
-/* Style for the placeholder text */
 .input-field::placeholder {
-  color: #000; /* Sets the placeholder text color to black */
-  font-weight: bold; /* Makes the placeholder text bold */
+  color: #000;
+  font-weight: bold;
 }
+
 .get-container {
   position: absolute;
   width: 400px;
   height: 70px;
-  top: 450px; /* Adjust this value as needed */
-  left: 310px; /* X position */
-  cursor: pointer; /* Changes cursor to a pointer when hovering over the button */
+  top: 450px;
+  left: 310px;
+  cursor: pointer;
 }
 
 .getreg-container {
   position: absolute;
   width: 400px;
   height: 70px;
-  top: 580px; /* Adjust this value as needed */
-  left: 310px; /* X position */
-  cursor: pointer; /* Changes cursor to a pointer when hovering over the button */
+  top: 580px;
+  left: 310px;
+  cursor: pointer;
 }
 
 .button {
   top: 500px;
-  left: 310px; /* X position */
-  width: 100%; /* Makes the image fill the container width */
-  height: 100%; /* Makes the image fill the container height */
-
+  left: 310px;
+  width: 100%;
+  height: 100%;
 }
 
 .button-text {
   position: absolute;
-  top: 50%; /* Vertically centers the text */
-  left: 50%; /* Horizontally centers the text */
-  transform: translate(-50%, -50%); /* Ensures perfect centering */
-  font-family: 'HU The Game', Arial, sans-serif; /* Use your custom font */
-  font-size: 25px; /* Adjust the font size as needed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'HU The Game', Arial, sans-serif;
+  font-size: 25px;
   font-weight: bold;
-  color: white; /* Adjust the text color as needed */
-  z-index: 2; /* Ensure the text is above the button image */
-  pointer-events: none; /* Allows clicks to pass through the text to the button */
+  color: white;
+  z-index: 2;
+  pointer-events: none;
 }
+
 .register-link {
   left: 310px;
-  color: #19B5FE; /* Set the text color to blue */
-  text-decoration: none; /* Remove the underline from the link */
+  color: #19B5FE;
+  text-decoration: none;
   font-size: 13;
 }
 
 .register-link:hover {
-  text-decoration: underline; /* Add underline on hover to indicate it's a link */
+  text-decoration: underline;
   font-size: 13;
 }
-
 
 .link h3 {
   left: 310px;
-  color: white; /* Set the color of "DON’T HAVE ACCOUNT?" text to white */
-  font-weight: normal; /* You can adjust this if needed */
+  color: white;
+  font-weight: normal;
 }
 
 .register-link {
-  color: #19B5FE; /* Set the text color of "REGISTER" to blue */
-  text-decoration: none; /* Remove the underline from the link */
+  color: #19B5FE;
+  text-decoration: none;
 }
 
 .register-link:hover {
-  text-decoration: underline; /* Add underline on hover to indicate it's a link */
+  text-decoration: underline;
 }
