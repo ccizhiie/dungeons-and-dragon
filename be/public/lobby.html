@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Lobby</title>
+</head>
+<body>
+    <h1>Game Lobby</h1>
+
+    <div>
+        <label for="roomCode">Enter Room Code:</label>
+        <input type="text" id="roomCode" placeholder="Room Code" required>
+        <input type="text" id="playerName" placeholder="Your Name" required>
+        <button id="joinGame">Join Game</button>
+    </div>
+
+    <div id="lobbyDetails" style="display: none;">
+        <h2>Room: <span id="currentRoomCode"></span></h2>
+        <h3>Players:</h3>
+        <ul id="playerList"></ul>
+
+        <button id="toggleReady">Toggle Ready</button>
+        <p id="allReadyMessage" style="display: none;">All players are ready! The game can now start.</p>
+    </div>
+
+    <script>
+        let playerName, roomCode;
+
+        // Join game when the button is clicked
+        document.getElementById('joinGame').addEventListener('click', function() {
+            roomCode = document.getElementById('roomCode').value;
+            playerName = document.getElementById('playerName').value;
+
+            fetch('/join-game', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({ roomCode, playerName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Joined game successfully!') {
+                    document.getElementById('lobbyDetails').style.display = 'block';
+                    document.getElementById('currentRoomCode').innerText = roomCode;
+                    fetchPlayerList();  // Fetch and display the list of players
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Fetch player list and update readiness
+        function fetchPlayerList() {
+            fetch('/get-players', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({ roomCode })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const playerListElement = document.getElementById('playerList');
+                playerListElement.innerHTML = '';  // Clear current list
+
+                data.players.forEach(player => {
+                    const listItem = document.createElement('li');
+                    listItem.innerText = `${player.player_name} - ${player.ready ? 'Ready' : 'Not Ready'}`;
+                    playerListElement.appendChild(listItem);
+                });
+
+                // Check if all players are ready
+                if (data.allReady) {
+                    document.getElementById('allReadyMessage').style.display = 'block';
+                } else {
+                    document.getElementById('allReadyMessage').style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Toggle ready status for the player
+        document.getElementById('toggleReady').addEventListener('click', function() {
+            fetch('/toggle-ready', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({ roomCode, playerName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                fetchPlayerList();  // Refresh player list after toggling readiness
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Auto-refresh player list every 5 seconds
+        setInterval(() => {
+            if (roomCode && document.getElementById('lobbyDetails').style.display === 'block') {
+                fetchPlayerList();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

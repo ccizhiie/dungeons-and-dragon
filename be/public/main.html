@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to D&D Game Lobby</h1>
+
+    <!-- Host Game Button -->
+    <button id="hostGameBtn">Host Game</button>
+
+    <!-- Join Game Button -->
+    <button id="joinGameBtn">Join Game</button>
+
+    <!-- Input for Room Code (for joining a game) -->
+    <div id="joinGameSection" style="display: none;">
+        <input type="text" id="roomCodeInput" placeholder="Enter Room Code">
+        <button id="submitJoinGame">Join</button>
+    </div>
+
+    <script>
+        // Token stored after login
+        const token = localStorage.getItem('jwtToken');
+
+        // Host Game
+        document.getElementById('hostGameBtn').addEventListener('click', () => {
+            axios.post('/host-game', {}, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                const roomCode = response.data.roomCode;
+                alert(`Game hosted! Room Code: ${roomCode}`);
+                window.location.href = `/lobby.html?roomCode=${roomCode}`;
+            })
+            .catch(error => {
+                console.error('Error hosting game:', error.response.data);
+                if (error.response.status === 401) {
+                    alert('You must be logged in to host a game.');
+                }
+            });
+            console.log('Token:', token);
+        });
+
+        // Show Join Game section
+        document.getElementById('joinGameBtn').addEventListener('click', () => {
+            document.getElementById('joinGameSection').style.display = 'block';
+        });
+
+        // Join Game
+        document.getElementById('submitJoinGame').addEventListener('click', () => {
+            const roomCode = document.getElementById('roomCodeInput').value;
+            axios.post('/join-game', { roomCode, player: 'currentPlayer' }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                alert('Joined the game successfully!');
+                window.location.href = `/lobby.html?roomCode=${roomCode}`;
+            })
+            .catch(error => {
+                console.error('Error joining game:', error.response.data);
+                alert('Failed to join the game.');
+            });
+        });
+    </script>
+</body>
+</html>
