@@ -1,0 +1,159 @@
+body, html {
+  src: url('../assets/HU The Game.ttf');
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.background-container {
+  height: 100%;
+  background-image: url('../assets/Login.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.reg-container {
+  height: 100%;
+  background-image: url('../assets/register.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 50px; /* Y */
+  left: 412px; /* X */
+  width: 246px; /* Width */
+  height: 91px; /* Height */
+}
+
+.input-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.username-container {
+  top: 200px; /* Y position for the container */
+  left: 310px; /* X position for the container */
+}
+
+.password-container {
+  top: 290px; /* Adjust as needed for the password position */
+  left: 310px; /* X position */
+}
+
+
+/* xx */
+
+.usereg-container {
+  top: 200px; /* Y position for the container */
+  left: 310px; /* X position for the container */
+}
+
+.emailreg-container {
+  top: 290px; /* Adjust as needed for the password position */
+  left: 310px; /* X position */
+}
+
+.passwordreg-container {
+  top: 390px; /* Y position for the container */
+  left: 310px; /* X position for the container */
+}
+
+.password2-container {
+  top: 490px; /* Adjust as needed for the password position */
+  left: 310px; /* X position */
+}
+
+
+
+.label {
+  position: absolute;
+  width: 100%; /* Adjust the width to match the label image */
+}
+
+.input-field {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; /* Sets the entered text color to black */
+  padding: 2px 82px 0 82px; /* Adjust padding to position the placeholder and input text */
+  width: 100%;
+  z-index: 1; /* Ensure the input is above the label image */
+  font-family: Arial, sans-serif;
+}
+
+/* Style for the placeholder text */
+.input-field::placeholder {
+  color: #000; /* Sets the placeholder text color to black */
+  font-weight: bold; /* Makes the placeholder text bold */
+}
+.get-container {
+  position: absolute;
+  width: 400px;
+  height: 70px;
+  top: 450px; /* Adjust this value as needed */
+  left: 310px; /* X position */
+  cursor: pointer; /* Changes cursor to a pointer when hovering over the button */
+}
+
+.getreg-container {
+  position: absolute;
+  width: 400px;
+  height: 70px;
+  top: 580px; /* Adjust this value as needed */
+  left: 310px; /* X position */
+  cursor: pointer; /* Changes cursor to a pointer when hovering over the button */
+}
+
+.button {
+  top: 500px;
+  left: 310px; /* X position */
+  width: 100%; /* Makes the image fill the container width */
+  height: 100%; /* Makes the image fill the container height */
+
+}
+
+.button-text {
+  position: absolute;
+  top: 50%; /* Vertically centers the text */
+  left: 50%; /* Horizontally centers the text */
+  transform: translate(-50%, -50%); /* Ensures perfect centering */
+  font-family: 'HU The Game', Arial, sans-serif; /* Use your custom font */
+  font-size: 25px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: white; /* Adjust the text color as needed */
+  z-index: 2; /* Ensure the text is above the button image */
+  pointer-events: none; /* Allows clicks to pass through the text to the button */
+}
+.register-link {
+  left: 310px;
+  color: #19B5FE; /* Set the text color to blue */
+  text-decoration: none; /* Remove the underline from the link */
+  font-size: 13;
+}
+
+.register-link:hover {
+  text-decoration: underline; /* Add underline on hover to indicate it's a link */
+  font-size: 13;
+}
+
+
+.link h3 {
+  left: 310px;
+  color: white; /* Set the color of "DON’T HAVE ACCOUNT?" text to white */
+  font-weight: normal; /* You can adjust this if needed */
+}
+
+.register-link {
+  color: #19B5FE; /* Set the text color of "REGISTER" to blue */
+  text-decoration: none; /* Remove the underline from the link */
+}
+
+.register-link:hover {
+  text-decoration: underline; /* Add underline on hover to indicate it's a link */
+}
