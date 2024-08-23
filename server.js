@@ -29,10 +29,12 @@ db.connect((err) => {
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
+
+    const secretKey  ='asdfghjkl'
     
     if (token == null) return res.sendStatus(401); // No token
 
-    jwt.verify(token, secret, (err, user) => {
+    jwt.verify(token, secretKey, (err, user) => {
         if (err) return res.sendStatus(403); // Invalid token
         req.user = user;
         next();
@@ -68,7 +70,7 @@ app.post('/login', (req, res) => {
         if (!validPassword) {
             return res.status(401).json({ message: 'Invalid credentials.' });
         }
-
+const secretKey  ='asdfghjkl'
         // Generate JWT token
         const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '1h' });
         res.json({ token });
@@ -77,6 +79,9 @@ app.post('/login', (req, res) => {
 
 // Host a game
 app.post('/host-game', authenticateToken, async (req, res) => {
+    const generateRoomCode = () => {
+        return Math.random().toString(36).substr(2, 5).toUpperCase();
+    };
     const { host } = req.body;
     const roomCode = generateRoomCode();
     try {

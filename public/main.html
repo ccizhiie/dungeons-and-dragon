@@ -23,8 +23,8 @@
 
     <script>
         // Token stored after login
-        const token = localStorage.getItem('jwtToken');
-
+        const token = localStorage.getItem('token');
+console.log(token)
         // Host Game
         document.getElementById('hostGameBtn').addEventListener('click', () => {
             axios.post('/host-game', {}, {
